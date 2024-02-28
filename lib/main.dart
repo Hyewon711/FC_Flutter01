@@ -1,88 +1,88 @@
 import 'package:flutter/material.dart';
 
-/// part2. ch01.05
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
       appBar: AppBar(
+        title: Text('Widget을 상하좌우로 배치하기'),
         backgroundColor: Colors.blue,
-        title: Text('Study to Container'),
       ),
-      body: CustomContainer(),
+      body: Body(),
     ),
   ));
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key});
+class Body extends StatelessWidget {
+  const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 300,
-        height: 300,
-        padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
-        decoration: BoxDecoration(
-          color: Colors.amber.shade200,
-          border: Border.all(color: Colors.red, width: 5, style: BorderStyle.solid),
-          borderRadius: BorderRadius.circular(100),
-          boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(6, 6), blurRadius: 10, spreadRadius: 10),
-            BoxShadow(color: Colors.blue.withOpacity(0.3), offset: Offset(6, 6), blurRadius: 10, spreadRadius: 10)
-          ],
-        ),
-        child: Center(child: Container(
-            color: Colors.green,
-            child: Text('Hello Container'))),
+    return SingleChildScrollView(
+      // 수평 스크롤 scrollDirection: Axis.horizontal,
+      // 수직 스크롤 scrollDirection: Axis.vertical,
+    child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            // Column을 사용하면 수직으로 배치된다.
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                  width: 100,
+                  height: 80,
+                  child: Text('Container1'),
+                  color: Colors.red),
+              Container(
+                  width: 100,
+                  height: 80,
+                  child: Text('Container2'),
+                  color: Colors.green),
+              Container(
+                  width: 100,
+                  height: 80,
+                  child: Text('Container3'),
+                  color: Colors.blue),
+            ],
+          ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text('Container4'),
+          ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text('Container5'),
+          ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text('Container6'),
+          ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text('Container7'),
+          ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text('Container8'),
+          ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text('Container9'),
+          )
+        ],
       ),
     );
   }
 }
-
-/// part2. ch01.04
-// void main() {
-//   runApp(
-//     MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           actions: [
-//             IconButton(onPressed: (){
-//               print('Tab!');
-//             }, icon: Icon(Icons.home)),
-//             Icon(Icons.play_arrow)
-//           ],
-//           centerTitle: false,
-//           title: Text('This is App bar'),
-//           backgroundColor: Colors.blue,
-//         ),
-//           body: TestWidget(),
-//         floatingActionButton: FloatingActionButton(
-//           child: Icon(Icons.bug_report),
-//           onPressed: () {
-//             print('Tab! FAB');
-//           },
-//         ),
-//       ),
-//     ),
-//   );
-// }
-//
-// class TestWidget extends StatelessWidget {
-//   const TestWidget({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Center(
-//         child: Text(
-//           'Hello Flutter',
-//           style: TextStyle(
-//             fontSize: 60,
-//             color: Colors.black,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
